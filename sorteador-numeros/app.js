@@ -6,14 +6,28 @@ function sortear() {
   let sorteados = [];
   let numero;
 
+  if (ate < de) {
+    document.getElementById("resultado").innerHTML =
+      '<label class="texto__paragrafo">O número inicial deve ser menor do que o final</label>';
+    return;
+  }
+
   for (let i = 0; i < quantidade; i++) {
     numero = obterNumero(de, ate);
 
     while (sorteados.includes(numero)) {
       numero = obterNumero(de, ate);
+      if ((sorteados = ate - de + 1)) {
+        document.getElementById("resultado").innerHTML =
+          '<label class="texto__paragrafo">Não há números suficiente.</label>';
+        return;
+
+        break;
+      }
     }
     sorteados.push(numero);
   }
+
   let resultado = document.getElementById("resultado");
   resultado.innerHTML = `<label class="texto__paragrafo">Números sorteados: ${sorteados}</label>`;
   alterarStatusBotao();
